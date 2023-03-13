@@ -1,25 +1,22 @@
-import React from 'react';
-import {FlatList, View} from 'react-native';
+import React, {useEffect} from 'react';
+import {Text, View} from 'react-native';
 
-import {sampleData} from './constants';
-import ListRender, {ListRenderProps} from './ListRender';
+import {useAppDispatch, useAppSelector} from './app/hooks';
+import {getPosts} from './features/posts/posts';
 
-interface LandingScreenProps {
-  message: string;
-}
+const FirstScreen: React.FC = () => {
+  const dispatch = useAppDispatch();
+  const {postsData} = useAppSelector(state => state.posts);
 
-const FirstScreen: React.FC<LandingScreenProps> = (
-  props: LandingScreenProps,
-) => {
-  const {message} = props;
-
-  const renderListItem = ({item}: {item: ListRenderProps}) => {
-    return <ListRender item={item} />;
-  };
+  useEffect(() => {
+    dispatch(getPosts());
+  }, [dispatch]);
 
   return (
-    <View style={{flex: 1}}>
-      <FlatList data={sampleData} renderItem={renderListItem} />
+    <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+      <Text style={{fontSize: 18, fontWeight: '600'}}>
+        Title of 2nd post: {postsData?.postsResult[1]?.title}
+      </Text>
     </View>
   );
 };
