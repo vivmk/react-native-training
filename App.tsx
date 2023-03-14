@@ -2,8 +2,8 @@ import {StatusBar} from 'react-native';
 import {Provider} from 'react-redux';
 import React from 'react';
 
-import LandingScreen from './src/LandingScreen';
-import {store} from './src/app/store';
+import {store} from './src/redux/store';
+import LandingScreen from './src/screens/LandingScreen';
 
 const App = () => {
   return (
