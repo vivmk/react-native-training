@@ -1,40 +1,57 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import {FlatList, Text, View} from 'react-native';
 
 import {useAppDispatch, useAppSelector} from '../redux/hooks';
 import landingScreenStyles from './LandingScreen.styles';
 import {fetchPosts} from '../redux/posts.api';
 import {PostsList} from '../models/posts.interface';
+import {checkAlternateValue} from '../utils/checkAlternateValue';
+import {SearchBar} from './SearchBar';
+import PostCard from './PostCard';
 
 const FirstScreen: React.FC = () => {
   const dispatch = useAppDispatch();
   const {postsData, isLoading, isError} = useAppSelector(state => state.posts);
 
-  useEffect(() => {
-    dispatch(fetchPosts());
-  }, [dispatch]);
+  // first is value, second is setter
+  const [message, setMessage] = useState('');
 
-  const renderPosts = ({item: post, key}: PostsList) => {
+  useEffect(() => {
+    // call api only if there are no posts available
+    !postsData.length && dispatch(fetchPosts());
+    // useEffect code will re-run if any of below array value changes
+  }, [dispatch, postsData]);
+
+  useEffect(() => {
+    if (isLoading) {
+      setMessage('Loading ...');
+    }
+    if (isError) {
+      setMessage('Something went wrong.');
+    }
+  }, [isLoading, isError]);
+
+  const renderPosts = ({item: post, index}: PostsList) => (
+    <PostCard key={index} post={post} />
+  );
+
+  if (checkAlternateValue(isLoading, isError)) {
     return (
-      <View key={key} style={{borderColor: 'black', borderWidth: 2}}>
-        <Text>{post.title}</Text>
+      <View style={landingScreenStyles.rootContainer}>
+        <Text style={landingScreenStyles.textMessage}>{message}</Text>
       </View>
     );
-  };
-
-  if (isLoading) {
-    return <Text>Loading ...</Text>;
-  }
-
-  if (isError) {
-    return <Text>Something went wrong.</Text>;
   }
 
   return (
     <View style={landingScreenStyles.rootContainer}>
-      <Text style={landingScreenStyles.textMessage}>
-        <FlatList data={postsData} renderItem={renderPosts} />
-      </Text>
+      <Text style={landingScreenStyles.welcomeText}>Welcome!</Text>
+      <SearchBar />
+      <FlatList
+        data={postsData}
+        renderItem={renderPosts}
+        fadingEdgeLength={50}
+      />
     </View>
   );
 };

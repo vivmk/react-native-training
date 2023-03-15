@@ -1,6 +1,6 @@
 export interface PostsList {
   item: PostType;
-  key: number;
+  index: number;
 }
 
 export interface PostType {
