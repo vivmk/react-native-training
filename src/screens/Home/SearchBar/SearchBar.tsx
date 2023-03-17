@@ -9,7 +9,7 @@ import {
 } from 'react-native';
 import React from 'react';
 
-import {DEVICE_WIDTH} from '../../constants/global.constants';
+import {DEVICE_WIDTH} from '../../../constants/global.constants';
 
 interface SearchBarProps {
   searchText: string;

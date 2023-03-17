@@ -1,15 +1,15 @@
 import React, {useEffect, useState} from 'react';
 import {FlatList, Text, View} from 'react-native';
 
-import {useAppDispatch, useAppSelector} from '../redux/hooks';
-import landingScreenStyles from './LandingScreen.styles';
-import {fetchPosts} from '../redux/posts.api';
-import {PostsList, PostType} from '../models/posts.interface';
-import {checkAlternateValue} from '../utils/checkAlternateValue';
+import {PostType, PostsList} from '../../models/posts.interface';
+import {useAppDispatch, useAppSelector} from '../../redux/hooks';
+import {fetchPosts} from '../../redux/posts.api';
+import {checkAlternateValue} from '../../utils/checkAlternateValue';
+import landingScreenStyles from './Home.styles';
 import {SearchBar} from './SearchBar';
 import PostCard from './PostCard';
 
-const FirstScreen: React.FC = () => {
+const Home: React.FC = () => {
   const dispatch = useAppDispatch();
   const {postsData, isLoading, isError} = useAppSelector(state => state.posts);
 
@@ -62,4 +62,4 @@ const FirstScreen: React.FC = () => {
   );
 };
 
-export default FirstScreen;
+export default Home;
