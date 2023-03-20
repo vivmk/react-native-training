@@ -8,6 +8,9 @@ const localUrls = {
   searchBar: {
     searchIcon: 'https://cdn-icons-png.flaticon.com/512/54/54481.png',
   },
+  profile: {
+    profilePic: 'https://cdn-icons-png.flaticon.com/512/1077/1077114.png',
+  },
 };
 
 export default localUrls;
