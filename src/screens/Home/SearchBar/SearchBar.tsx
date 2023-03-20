@@ -1,23 +1,20 @@
-import {
-  Image,
-  Keyboard,
-  StyleSheet,
-  Text,
-  TextInput,
-  TouchableOpacity,
-  View,
-} from 'react-native';
+import {Image, Keyboard, TextInput, TouchableOpacity, View} from 'react-native';
 import React from 'react';
 
-import {DEVICE_WIDTH} from '../../../constants/global.constants';
+import searchBarStyles from './SearchBar.styles';
+import {SearchBarPropsType} from './searchBar.type';
+import localStrings from '../../../constants/global.strings';
+import localUrls from '../../../constants/global.urls';
+import {CrossIcon} from '../../../components/CrossIcon';
 
-interface SearchBarProps {
-  searchText: string;
-  setSearchText: (text: string) => void;
-}
-
-const SearchBar = (props: SearchBarProps) => {
-  const {searchText, setSearchText} = props;
+/**
+ * component to show search bar
+ * @returns {JSX.Element}
+ */
+const SearchBar: React.FC<SearchBarPropsType> = (
+  searchBarProps: SearchBarPropsType,
+): JSX.Element => {
+  const {searchText, setSearchText} = searchBarProps;
 
   return (
     <View style={searchBarStyles.rootContainer}>
@@ -26,22 +23,16 @@ const SearchBar = (props: SearchBarProps) => {
           value={searchText}
           onChangeText={setSearchText}
           style={searchBarStyles.searchText}
-          placeholder="Search by title"
+          placeholder={localStrings.searchBar.inputPlaceholder}
         />
-        {searchText.length > 0 && (
-          <TouchableOpacity
-            onPress={() => setSearchText('')}
-            style={searchBarStyles.crossContainer}>
-            <Text style={searchBarStyles.crossText}>X</Text>
-          </TouchableOpacity>
-        )}
+        <CrossIcon searchText={searchText} setSearchText={setSearchText} />
       </View>
       <TouchableOpacity
         onPress={() => Keyboard.dismiss()}
         style={searchBarStyles.imageContainer}>
         <Image
-          style={{width: 25, height: 25}}
-          source={{uri: 'https://cdn-icons-png.flaticon.com/512/54/54481.png'}}
+          style={searchBarStyles.iconSize}
+          source={{uri: localUrls.searchBar.searchIcon}}
         />
       </TouchableOpacity>
     </View>
@@ -49,47 +40,3 @@ const SearchBar = (props: SearchBarProps) => {
 };
 
 export default SearchBar;
-
-const searchBarStyles = StyleSheet.create({
-  crossText: {
-    color: 'white',
-  },
-  crossContainer: {
-    height: 20,
-    width: 20,
-    borderRadius: 50,
-    backgroundColor: 'red',
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  imageContainer: {
-    padding: 12,
-    elevation: 6,
-    borderWidth: 2,
-    borderRadius: 8,
-    borderColor: 'green',
-    backgroundColor: 'white',
-  },
-  rootContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-  },
-  searchText: {
-    fontWeight: '600',
-    width: DEVICE_WIDTH - 150,
-    fontSize: 15,
-  },
-  searchContainer: {
-    margin: 15,
-    borderWidth: 2,
-    alignItems: 'center',
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    width: DEVICE_WIDTH - 100,
-    borderColor: 'green',
-    backgroundColor: 'white',
-    borderRadius: 8,
-    paddingHorizontal: 10,
-    elevation: 6,
-  },
-});

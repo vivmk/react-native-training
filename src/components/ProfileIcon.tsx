@@ -1,13 +1,18 @@
 import React from 'react';
 import {Image} from 'react-native';
+import localUrls from '../constants/global.urls';
 
 import {appBottomStyles} from '../navigation/AppBottomStack';
 
-const ProfileIcon = () => {
+/**
+ * profile icon to show in bottom tab bar
+ * @returns {JSX.Element}
+ */
+const ProfileIcon: React.FC = (): JSX.Element => {
   return (
     <Image
       style={appBottomStyles.iconSize}
-      source={{uri: 'https://cdn-icons-png.flaticon.com/512/1077/1077114.png'}}
+      source={{uri: localUrls.profileIcon.iconImage}}
     />
   );
 };

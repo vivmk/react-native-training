@@ -10,6 +10,7 @@ const Tab = createBottomTabNavigator();
 const tabScreenOptions = () => ({
   tabBarActiveTintColor: 'green',
   tabBarLabelStyle: appBottomStyles.labelText,
+  tabBarHideOnKeyboard: true,
 });
 
 const AppBottomStack = () => {

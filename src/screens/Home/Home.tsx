@@ -1,45 +1,34 @@
 import React, {useEffect, useState} from 'react';
-import {FlatList, Text, View} from 'react-native';
+import {Text, View} from 'react-native';
 
-import {PostType, PostsList} from '../../models/posts.interface';
 import {useAppDispatch, useAppSelector} from '../../redux/hooks';
 import {fetchPosts} from '../../redux/posts.api';
 import {checkAlternateValue} from '../../utils/checkAlternateValue';
 import landingScreenStyles from './Home.styles';
 import {SearchBar} from './SearchBar';
-import PostCard from './PostCard';
+import localStrings from '../../constants/global.strings';
+import {emptyString} from '../../constants/global.constants';
+import {Posts} from './Posts';
 
-const Home: React.FC = () => {
+/**
+ * component to show landing screen
+ * @returns {JSX.Element}
+ */
+const Home: React.FC = (): JSX.Element => {
   const dispatch = useAppDispatch();
   const {postsData, isLoading, isError} = useAppSelector(state => state.posts);
 
-  // first is value, second is setter
-  const [message, setMessage] = useState('');
-  const [searchText, setSearchText] = useState('');
+  const [message, setMessage] = useState(emptyString);
+  const [searchText, setSearchText] = useState(emptyString);
 
   useEffect(() => {
-    // call api only if there are no posts available
     !postsData.length && dispatch(fetchPosts());
-    // useEffect code will re-run if any of below array value changes
   }, [dispatch, postsData]);
 
   useEffect(() => {
-    isLoading && setMessage('Loading ...');
-    isError && setMessage('Something went wrong.');
+    isLoading && setMessage(localStrings.home.loading);
+    isError && setMessage(localStrings.home.somethingWrong);
   }, [isLoading, isError]);
-
-  const searchByText = (post: PostType) => {
-    return (
-      post.title.toLowerCase().includes(searchText.toLowerCase()) ||
-      searchText === ''
-    );
-  };
-
-  const filteredPostsData = postsData.filter(searchByText);
-
-  const renderPosts = ({item: post, index}: PostsList) => (
-    <PostCard key={index} post={post} />
-  );
 
   if (checkAlternateValue(isLoading, isError)) {
     return (
@@ -51,13 +40,11 @@ const Home: React.FC = () => {
 
   return (
     <View style={landingScreenStyles.rootContainer}>
-      <Text style={landingScreenStyles.welcomeText}>Welcome!</Text>
+      <Text style={landingScreenStyles.welcomeText}>
+        {localStrings.home.welcome}
+      </Text>
       <SearchBar searchText={searchText} setSearchText={setSearchText} />
-      <FlatList
-        data={filteredPostsData}
-        renderItem={renderPosts}
-        fadingEdgeLength={50}
-      />
+      <Posts searchText={searchText} />
     </View>
   );
 };

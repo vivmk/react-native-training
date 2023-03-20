@@ -1,13 +1,18 @@
 import React from 'react';
 import {Image} from 'react-native';
 
+import localUrls from '../constants/global.urls';
 import {appBottomStyles} from '../navigation/AppBottomStack';
 
-const HomeIcon = () => {
+/**
+ * home icon to show in bottom tab bar
+ * @returns {JSX.Element}
+ */
+const HomeIcon: React.FC = (): JSX.Element => {
   return (
     <Image
       style={appBottomStyles.iconSize}
-      source={{uri: 'https://cdn-icons-png.flaticon.com/512/25/25694.png'}}
+      source={{uri: localUrls.homeIcon.iconImage}}
     />
   );
 };
