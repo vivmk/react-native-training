@@ -2,7 +2,7 @@ import {FlatList} from 'react-native';
 import React from 'react';
 
 import {PostCard} from './PostCard';
-import {PostsListType, PostsType} from './posts.type';
+import {postsListPropsType, PostsPropsType} from './posts.type';
 import {PostType} from '../../../models/posts.interface';
 import {useAppSelector} from '../../../redux/hooks';
 import {emptyString} from '../../../constants/global.constants';
@@ -10,10 +10,12 @@ import localNumbers from '../../../constants/global.numbers';
 
 /**
  * component to show list of posts
- * @param {PostsType} postsProps
+ * @param {PostsPropsType} postsProps
  * @returns {JSX.Element}
  */
-const Posts: React.FC<PostsType> = (postsProps: PostsType): JSX.Element => {
+const Posts: React.FC<PostsPropsType> = (
+  postsProps: PostsPropsType,
+): JSX.Element => {
   const {searchText} = postsProps;
   const {postsData} = useAppSelector(state => state.posts);
 
@@ -33,10 +35,10 @@ const Posts: React.FC<PostsType> = (postsProps: PostsType): JSX.Element => {
 
   /**
    * list of posts
-   * @param {PostsListType} postsListProps
+   * @param {postsListPropsType} postsListProps
    * @returns {JSX.Element}
    */
-  const renderPosts = (postsListProps: PostsListType): JSX.Element => {
+  const renderPosts = (postsListProps: postsListPropsType): JSX.Element => {
     const {item: post, index} = postsListProps;
     return <PostCard key={index} post={post} />;
   };

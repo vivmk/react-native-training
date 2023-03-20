@@ -1,8 +1,8 @@
-export type PostsListType = {
+export type postsListPropsType = {
   item: any;
   index: number;
 };
 
-export type PostsType = {
+export type PostsPropsType = {
   searchText: string;
 };
