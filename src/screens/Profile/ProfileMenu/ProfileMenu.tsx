@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {FlatList, Image, Text, TouchableOpacity, View} from 'react-native';
 
 import localUrls from '../../../constants/global.urls';
@@ -6,12 +6,27 @@ import profileMenuStyles from './ProfileMenu.styles';
 import localStrings from '../../../constants/global.strings';
 import {menuData} from '../../../constants/global.constants';
 import {MenuListType} from './ProfileMenu.type';
+import {SignOutModal} from './SignOutModal';
 
 /**
  * component to show profile menu
  * @returns {JSX.Element}
  */
 const ProfileMenu: React.FC = (): JSX.Element => {
+  const [isSignOutModalVisible, setIsSignOutModalVisible] = useState(false);
+
+  /**
+   * openModal method
+   * @returns {void}
+   */
+  const openModal = (): void => setIsSignOutModalVisible(true);
+
+  /**
+   * closeModal method
+   * @returns {void}
+   */
+  const closeModal = (): void => setIsSignOutModalVisible(false);
+
   /**
    * renderProfileMenu method
    * @param {MenuListType} menuListProps
@@ -41,11 +56,15 @@ const ProfileMenu: React.FC = (): JSX.Element => {
       <View style={profileMenuStyles.listContainer}>
         <FlatList data={menuData} renderItem={renderProfileMenu} />
       </View>
-      <TouchableOpacity onPress={() => console.log('pressed sign out')}>
+      <TouchableOpacity onPress={openModal}>
         <Text style={profileMenuStyles.signOut}>
           {localStrings.profileMenu.signOut}
         </Text>
       </TouchableOpacity>
+      <SignOutModal
+        isModalVisible={isSignOutModalVisible}
+        closeModal={closeModal}
+      />
     </>
   );
 };
