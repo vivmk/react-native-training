@@ -1,68 +1,38 @@
-import {Image, StyleSheet, Text, View} from 'react-native';
+import {Image, Text, View} from 'react-native';
 import React from 'react';
 
+import profileStyles from './Profile.styles';
 import localUrls from '../../constants/global.urls';
+import {sampleName} from '../../constants/global.constants';
+import localStrings from '../../constants/global.strings';
+import {ProfileMenu} from './ProfileMenu';
 
-const Profile = () => {
+/**
+ * component to show profile screen
+ * @returns {JSX.Element}
+ */
+const Profile: React.FC = (): JSX.Element => {
   return (
     <View style={profileStyles.rootContainer}>
       <View style={profileStyles.headerContainer}>
+        {/* picture */}
         <View style={profileStyles.pictureContainer}>
           <Image
             style={profileStyles.iconSize}
             source={{uri: localUrls.profile.profilePic}}
           />
         </View>
+        {/* name and bio */}
         <View style={profileStyles.infoContainer}>
-          <Text style={profileStyles.nameText}>John Doe</Text>
+          <Text style={profileStyles.nameText}>{sampleName}</Text>
           <Text style={profileStyles.bioText}>
-            An investment in knowledge pays the best!
+            {localStrings.profile.bioText}
           </Text>
         </View>
       </View>
+      <ProfileMenu />
     </View>
   );
 };
 
 export default Profile;
-
-const profileStyles = StyleSheet.create({
-  rootContainer: {
-    flex: 1,
-  },
-  iconSize: {
-    width: 50,
-    height: 50,
-  },
-  headerContainer: {
-    flexDirection: 'row',
-  },
-  bioText: {
-    width: 200,
-    fontSize: 15,
-    marginTop: 5,
-    color: 'green',
-    fontWeight: '500',
-  },
-  nameText: {
-    fontSize: 25,
-    fontWeight: '700',
-  },
-  infoContainer: {
-    paddingVertical: 40,
-  },
-  pictureContainer: {
-    width: 100,
-    height: 100,
-    marginVertical: 30,
-    marginHorizontal: 25,
-    justifyContent: 'center',
-    alignItems: 'center',
-    padding: 30,
-    borderRadius: 100,
-    borderWidth: 4,
-    borderColor: 'green',
-    backgroundColor: 'white',
-    elevation: 6,
-  },
-});
