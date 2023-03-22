@@ -3,6 +3,9 @@ const localNumbers = {
     listFadeLength: 50,
     batchToRender: 5,
   },
+  landingScreen: {
+    codeLength: 4,
+  },
 };
 
 export default localNumbers;

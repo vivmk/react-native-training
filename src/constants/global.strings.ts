@@ -16,6 +16,15 @@ const localStrings = {
   profileMenu: {
     signOut: 'Sign Out',
   },
+  signOutModal: {
+    signOut: 'SIGN OUT',
+    signOutMessage: 'Are you sure you want to Sign Out?',
+    yes: 'Yes',
+  },
+  landingScreen: {
+    welcomeText: 'Welcome to Native App',
+    welcomeMessage: 'Please enter your pass code',
+  },
 };
 
 export default localStrings;

@@ -7,23 +7,39 @@ import {HomeIcon, ProfileIcon} from '../components';
 
 const Tab = createBottomTabNavigator();
 
-const tabScreenOptions = () => ({
+/**
+ * tabScreenOptions method
+ * @returns {object}
+ */
+const tabScreenOptions = (): object => ({
   tabBarActiveTintColor: 'green',
   tabBarLabelStyle: appBottomStyles.labelText,
   tabBarHideOnKeyboard: true,
 });
 
-const AppBottomStack = () => {
+/**
+ * AppBottomStack component
+ * @returns {JSX.Element}
+ */
+const AppBottomStack = (): JSX.Element => {
   return (
     <Tab.Navigator screenOptions={tabScreenOptions}>
       <Tab.Screen
-        name="Home"
-        options={{headerShown: false, tabBarIcon: HomeIcon}}
+        name="HomeScreen"
+        options={{
+          headerShown: false,
+          tabBarIcon: HomeIcon,
+          tabBarLabel: 'Home',
+        }}
         component={Home}
       />
       <Tab.Screen
-        name="Profile"
-        options={{headerShown: false, tabBarIcon: ProfileIcon}}
+        name="ProfileScreen"
+        options={{
+          headerShown: false,
+          tabBarIcon: ProfileIcon,
+          tabBarLabel: 'Profile',
+        }}
         component={Profile}
       />
     </Tab.Navigator>

@@ -10,6 +10,8 @@ export const crossText = 'X';
 
 export const sampleName = 'John Doe';
 
+export const userPinCode = '2323';
+
 export const menuData = [
   {id: 1, name: 'First menu'},
   {id: 2, name: 'Second menu'},
