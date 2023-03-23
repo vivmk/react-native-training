@@ -6,6 +6,7 @@ import {SignOutProps} from './SignOutModal.type';
 import localStrings from '../../../../constants/global.strings';
 import routes from '../../../../constants/screen.routes';
 import {useNavigation} from '@react-navigation/native';
+import {storePinInLocal} from '../../../../utils/storePinInLocal';
 
 /**
  * SignOutModal component
@@ -23,6 +24,7 @@ const SignOutModal: React.FC<SignOutProps> = (signOutProps): JSX.Element => {
   const onSignOutPressHandler = (): void => {
     closeModal();
     navigation.navigate(routes.LandingScreen);
+    storePinInLocal(null);
   };
 
   return (

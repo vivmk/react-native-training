@@ -5,6 +5,7 @@ const localNumbers = {
   },
   landingScreen: {
     codeLength: 4,
+    pinLength: 4,
   },
 };
 

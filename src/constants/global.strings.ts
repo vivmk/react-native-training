@@ -24,6 +24,7 @@ const localStrings = {
   landingScreen: {
     welcomeText: 'Welcome to Native App',
     welcomeMessage: 'Please enter your pass code',
+    pinError: 'Please enter correct code!',
   },
 };
 
