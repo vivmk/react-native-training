@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {Text, TextInput, View} from 'react-native';
+import {Text, TextInput, TouchableOpacity, View} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
@@ -18,9 +18,14 @@ const LandingScreen: React.FC = (): JSX.Element => {
   const navigation = useNavigation<any>();
 
   // local string states
-  const [pinError, setPinError] = useState(emptyString);
   const [localPin, setLocalPin] = useState(emptyString);
   const [codeInput, setCodeInput] = useState(emptyString);
+
+  const initialErrorState = {showForgot: false, errorMessage: emptyString};
+  const [pinError, setPinError] = useState(initialErrorState);
+  const isPinError = pinError.errorMessage.length > 0;
+
+  const [errorCount, setErrorCount] = useState(0);
 
   /**
    * clearStateNavigate method
@@ -43,13 +48,19 @@ const LandingScreen: React.FC = (): JSX.Element => {
         storePinInLocal(code);
       }
       // log in
-      else if (code === localPin) {
-        clearStateNavigate();
-      }
+      else if (code === localPin) clearStateNavigate();
       // wrong code
       else {
-        setCodeInput(emptyString);
-        setPinError(localStrings.landingScreen.pinError);
+        // if user entered wrong code 2 times
+        if (errorCount === 2) setPinError({...pinError, showForgot: true});
+        // 2 wrong codes not occurred
+        else {
+          setPinError({
+            ...pinError,
+            errorMessage: localStrings.landingScreen.pinError,
+          });
+          setErrorCount(count => count + 1);
+        }
       }
     }
   };
@@ -60,7 +71,7 @@ const LandingScreen: React.FC = (): JSX.Element => {
    */
   const checkSetCode = (code: string): void => {
     setCodeInput(code);
-    setPinError(emptyString);
+    setPinError(initialErrorState);
     checkAuthPin(code);
   };
 
@@ -68,29 +79,39 @@ const LandingScreen: React.FC = (): JSX.Element => {
    * getStoredPin method
    * @returns {Promise<void>}
    */
-  const setInitialRoute = async (): Promise<void> => {
+  const getStoredPin = async (): Promise<void> => {
     const jsonValue = await AsyncStorage.getItem(pinCodeKey);
     const localData = jsonValue !== null ? JSON.parse(jsonValue) : null;
-
     setLocalPin(localData);
-    localData &&
-      navigation.navigate(routes.AppBottomStack, {screen: routes.HomeScreen});
   };
 
   useEffect(() => {
-    setInitialRoute();
-  }, []);
+    getStoredPin();
+  });
 
   /**
    * ErrorMessage component
    * @returns {JSX.Element}
    */
   const ErrorMessage = (): JSX.Element => {
-    if (!pinError.length) {
+    if (!isPinError) {
       return <></>;
     }
-    return <Text style={landingScreenStyles.errorMessage}>{pinError}</Text>;
+    return (
+      <Text style={landingScreenStyles.errorForgotMessage}>
+        {pinError.errorMessage}
+      </Text>
+    );
   };
+
+  const onForgotCodeHandler = () => {
+    storePinInLocal(null);
+    setPinError(initialErrorState);
+    setCodeInput(emptyString);
+  };
+
+  const errorOrForgot = isPinError || pinError.showForgot;
+  const dynamicColor = errorOrForgot ? 'red' : 'green';
 
   return (
     <View style={landingScreenStyles.rootContainer}>
@@ -104,10 +125,21 @@ const LandingScreen: React.FC = (): JSX.Element => {
         value={codeInput}
         onChangeText={num => checkSetCode(num)}
         maxLength={localNumbers.landingScreen.codeLength}
-        style={landingScreenStyles.codeInput}
         keyboardType="numeric"
+        style={{
+          ...landingScreenStyles.codeInput,
+          borderColor: dynamicColor,
+          color: dynamicColor,
+        }}
       />
       <ErrorMessage />
+      {pinError.showForgot && (
+        <TouchableOpacity onPress={onForgotCodeHandler}>
+          <Text style={landingScreenStyles.errorForgotMessage}>
+            Forgot Code?
+          </Text>
+        </TouchableOpacity>
+      )}
     </View>
   );
 };

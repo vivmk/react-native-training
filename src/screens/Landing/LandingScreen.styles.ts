@@ -1,7 +1,7 @@
 import {StyleSheet} from 'react-native';
 
 const landingScreenStyles = StyleSheet.create({
-  errorMessage: {
+  errorForgotMessage: {
     fontSize: 16,
     marginTop: 30,
     fontWeight: '600',
@@ -30,7 +30,6 @@ const landingScreenStyles = StyleSheet.create({
     fontWeight: '700',
     letterSpacing: 15,
     textAlign: 'center',
-    borderColor: 'green',
     backgroundColor: 'white',
     borderRadius: 10,
     marginTop: 50,
