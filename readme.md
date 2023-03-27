@@ -11,3 +11,13 @@ yarn add @react-navigation/native-stack
 
 to install bottom tab nav lib:
 yarn add @react-navigation/bottom-tabs
+
+DAY 13 :
+
+useMemo => keeping only value check
+
+<!-- object, boolean, string, numbers -->
+
+useCallback => keeping only function check
+
+<!-- () => {.... value ...} -->
