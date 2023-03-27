@@ -1,5 +1,7 @@
 import {StyleSheet} from 'react-native';
 
+import colors from '../../../../constants/colors';
+
 const postCardStyles = StyleSheet.create({
   postBody: {
     marginTop: 5,
@@ -11,11 +13,11 @@ const postCardStyles = StyleSheet.create({
   },
   rootContainer: {
     borderWidth: 2,
-    borderColor: 'green',
+    borderColor: colors.green,
     padding: 10,
     marginVertical: 8,
     marginHorizontal: 15,
-    backgroundColor: 'white',
+    backgroundColor: colors.white,
     borderRadius: 10,
     elevation: 5,
   },

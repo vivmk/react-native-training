@@ -19,9 +19,11 @@ const localStrings = {
   signOutModal: {
     signOut: 'SIGN OUT',
     signOutMessage: 'Are you sure you want to Sign Out?',
+    crossText: 'X',
     yes: 'Yes',
   },
   landingScreen: {
+    forgotCode: 'Forgot Code?',
     welcomeText: 'Welcome to Native App',
     welcomeMessage: 'Please enter your pass code',
     pinError: 'Please enter correct code!',

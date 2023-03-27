@@ -1,4 +1,4 @@
-import {Modal, Text, TouchableOpacity, View} from 'react-native';
+import {Text, TouchableOpacity, View} from 'react-native';
 import React from 'react';
 
 import signOutModalStyles from './SignOutModal.styles';
@@ -7,6 +7,7 @@ import localStrings from '../../../../constants/global.strings';
 import routes from '../../../../constants/screen.routes';
 import {useNavigation} from '@react-navigation/native';
 import {storePinInLocal} from '../../../../utils/storePinInLocal';
+import {PopupModal} from '../../../../components';
 
 /**
  * SignOutModal component
@@ -28,38 +29,34 @@ const SignOutModal: React.FC<SignOutProps> = (signOutProps): JSX.Element => {
   };
 
   return (
-    <Modal
-      transparent
-      statusBarTranslucent
-      visible={isModalVisible}
-      animationType="fade">
-      <View style={signOutModalStyles.rootContainer}>
-        <View style={signOutModalStyles.modalContainer}>
-          {/* header */}
-          <View style={signOutModalStyles.headerContainer}>
-            <Text style={signOutModalStyles.headerText}>
-              {localStrings.signOutModal.signOut}
-            </Text>
-            <TouchableOpacity
-              onPress={closeModal}
-              style={signOutModalStyles.crossIcon}>
-              <Text style={signOutModalStyles.crossText}>X</Text>
-            </TouchableOpacity>
-          </View>
-          {/* description */}
-          <Text style={signOutModalStyles.bodyText}>
-            {localStrings.signOutModal.signOutMessage}
+    <PopupModal isModalVisible={isModalVisible}>
+      <>
+        {/* header */}
+        <View style={signOutModalStyles.headerContainer}>
+          <Text style={signOutModalStyles.headerText}>
+            {localStrings.signOutModal.signOut}
           </Text>
           <TouchableOpacity
-            onPress={onSignOutPressHandler}
-            style={signOutModalStyles.buttonContainer}>
-            <Text style={signOutModalStyles.buttonText}>
-              {localStrings.signOutModal.yes}
+            onPress={closeModal}
+            style={signOutModalStyles.crossIcon}>
+            <Text style={signOutModalStyles.crossText}>
+              {localStrings.signOutModal.crossText}
             </Text>
           </TouchableOpacity>
         </View>
-      </View>
-    </Modal>
+        {/* description */}
+        <Text style={signOutModalStyles.bodyText}>
+          {localStrings.signOutModal.signOutMessage}
+        </Text>
+        <TouchableOpacity
+          onPress={onSignOutPressHandler}
+          style={signOutModalStyles.buttonContainer}>
+          <Text style={signOutModalStyles.buttonText}>
+            {localStrings.signOutModal.yes}
+          </Text>
+        </TouchableOpacity>
+      </>
+    </PopupModal>
   );
 };
 

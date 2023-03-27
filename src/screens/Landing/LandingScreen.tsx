@@ -9,6 +9,36 @@ import localNumbers from '../../constants/global.numbers';
 import localStrings from '../../constants/global.strings';
 import landingScreenStyles from './LandingScreen.styles';
 import {storePinInLocal} from '../../utils/storePinInLocal';
+import colors from '../../constants/colors';
+
+/**
+ * ErrorMessage component
+ * @returns {JSX.Element}
+ */
+const ErrorMessage = ({isPinError, pinError}: any): JSX.Element => {
+  if (!isPinError) {
+    return <></>;
+  }
+  return (
+    <Text style={landingScreenStyles.errorForgotMessage}>
+      {pinError.errorMessage}
+    </Text>
+  );
+};
+
+const ForgotCode = ({pinError, onForgotCodeHandler}: any) => {
+  if (!pinError.showForgot) {
+    return <></>;
+  }
+
+  return (
+    <TouchableOpacity onPress={onForgotCodeHandler}>
+      <Text style={landingScreenStyles.errorForgotMessage}>
+        {localStrings.landingScreen.forgotCode}
+      </Text>
+    </TouchableOpacity>
+  );
+};
 
 /**
  * Landing screen component
@@ -23,9 +53,9 @@ const LandingScreen: React.FC = (): JSX.Element => {
 
   const initialErrorState = {showForgot: false, errorMessage: emptyString};
   const [pinError, setPinError] = useState(initialErrorState);
-  const isPinError = pinError.errorMessage.length > 0;
+  const isPinError = pinError.errorMessage.length > localNumbers.emptyNumber;
 
-  const [errorCount, setErrorCount] = useState(0);
+  const [errorCount, setErrorCount] = useState(localNumbers.emptyNumber);
 
   /**
    * clearStateNavigate method
@@ -48,11 +78,15 @@ const LandingScreen: React.FC = (): JSX.Element => {
         storePinInLocal(code);
       }
       // log in
-      else if (code === localPin) clearStateNavigate();
+      else if (code === localPin) {
+        clearStateNavigate();
+      }
       // wrong code
       else {
         // if user entered wrong code 2 times
-        if (errorCount === 2) setPinError({...pinError, showForgot: true});
+        if (errorCount === 2) {
+          setPinError({...pinError, showForgot: true});
+        }
         // 2 wrong codes not occurred
         else {
           setPinError({
@@ -89,21 +123,6 @@ const LandingScreen: React.FC = (): JSX.Element => {
     getStoredPin();
   });
 
-  /**
-   * ErrorMessage component
-   * @returns {JSX.Element}
-   */
-  const ErrorMessage = (): JSX.Element => {
-    if (!isPinError) {
-      return <></>;
-    }
-    return (
-      <Text style={landingScreenStyles.errorForgotMessage}>
-        {pinError.errorMessage}
-      </Text>
-    );
-  };
-
   const onForgotCodeHandler = () => {
     storePinInLocal(null);
     setPinError(initialErrorState);
@@ -111,7 +130,7 @@ const LandingScreen: React.FC = (): JSX.Element => {
   };
 
   const errorOrForgot = isPinError || pinError.showForgot;
-  const dynamicColor = errorOrForgot ? 'red' : 'green';
+  const dynamicColor = errorOrForgot ? colors.red : colors.green;
 
   return (
     <View style={landingScreenStyles.rootContainer}>
@@ -132,14 +151,11 @@ const LandingScreen: React.FC = (): JSX.Element => {
           color: dynamicColor,
         }}
       />
-      <ErrorMessage />
-      {pinError.showForgot && (
-        <TouchableOpacity onPress={onForgotCodeHandler}>
-          <Text style={landingScreenStyles.errorForgotMessage}>
-            Forgot Code?
-          </Text>
-        </TouchableOpacity>
-      )}
+      <ErrorMessage isPinError={isPinError} pinError={pinError} />
+      <ForgotCode
+        pinError={pinError}
+        onForgotCodeHandler={onForgotCodeHandler}
+      />
     </View>
   );
 };

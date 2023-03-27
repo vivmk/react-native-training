@@ -1,5 +1,7 @@
 import {StyleSheet} from 'react-native';
 
+import colors from '../../../constants/colors';
+
 const profileMenuStyles = StyleSheet.create({
   menuText: {
     fontSize: 15,
@@ -8,7 +10,7 @@ const profileMenuStyles = StyleSheet.create({
   signOut: {
     marginHorizontal: 35,
     fontSize: 17,
-    color: 'red',
+    color: colors.red,
     fontWeight: '700',
     textShadowColor: 'rgba(0, 0, 0, 0.225)',
     textShadowOffset: {width: 1, height: 1},
@@ -24,10 +26,10 @@ const profileMenuStyles = StyleSheet.create({
   },
   menuContainer: {
     marginVertical: 5,
-    backgroundColor: 'white',
+    backgroundColor: colors.white,
     padding: 15,
     borderWidth: 2,
-    borderColor: 'green',
+    borderColor: colors.green,
     elevation: 4,
     flexDirection: 'row',
     justifyContent: 'space-between',

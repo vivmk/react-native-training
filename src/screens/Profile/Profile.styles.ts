@@ -1,5 +1,7 @@
 import {StyleSheet} from 'react-native';
 
+import colors from '../../constants/colors';
+
 const profileStyles = StyleSheet.create({
   rootContainer: {
     flex: 1,
@@ -15,7 +17,7 @@ const profileStyles = StyleSheet.create({
     width: 200,
     fontSize: 15,
     marginTop: 5,
-    color: 'green',
+    color: colors.green,
     fontWeight: '500',
   },
   nameText: {
@@ -35,8 +37,8 @@ const profileStyles = StyleSheet.create({
     padding: 30,
     borderRadius: 100,
     borderWidth: 4,
-    borderColor: 'green',
-    backgroundColor: 'white',
+    borderColor: colors.green,
+    backgroundColor: colors.white,
     elevation: 6,
   },
 });

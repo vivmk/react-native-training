@@ -1,5 +1,6 @@
 import {StyleSheet} from 'react-native';
 
+import colors from '../../../constants/colors';
 import {DEVICE_WIDTH} from '../../../constants/global.constants';
 
 const searchBarStyles = StyleSheet.create({
@@ -8,13 +9,13 @@ const searchBarStyles = StyleSheet.create({
     height: 25,
   },
   crossText: {
-    color: 'white',
+    color: colors.white,
   },
   crossContainer: {
     height: 20,
     width: 20,
     borderRadius: 50,
-    backgroundColor: 'red',
+    backgroundColor: colors.red,
     justifyContent: 'center',
     alignItems: 'center',
   },
@@ -23,8 +24,8 @@ const searchBarStyles = StyleSheet.create({
     elevation: 6,
     borderWidth: 2,
     borderRadius: 8,
-    borderColor: 'green',
-    backgroundColor: 'white',
+    borderColor: colors.green,
+    backgroundColor: colors.white,
   },
   rootContainer: {
     flexDirection: 'row',
@@ -42,8 +43,8 @@ const searchBarStyles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     width: DEVICE_WIDTH - 100,
-    borderColor: 'green',
-    backgroundColor: 'white',
+    borderColor: colors.green,
+    backgroundColor: colors.white,
     borderRadius: 8,
     paddingHorizontal: 10,
     elevation: 6,

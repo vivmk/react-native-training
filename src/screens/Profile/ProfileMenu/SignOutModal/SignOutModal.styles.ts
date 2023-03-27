@@ -1,9 +1,11 @@
 import {StyleSheet} from 'react-native';
 
+import colors from '../../../../constants/colors';
+
 const signOutModalStyles = StyleSheet.create({
   buttonText: {
     fontWeight: '500',
-    color: 'white',
+    color: colors.white,
   },
   buttonContainer: {
     width: 80,
@@ -11,7 +13,7 @@ const signOutModalStyles = StyleSheet.create({
     borderRadius: 8,
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: 'green',
+    backgroundColor: colors.green,
   },
   bodyText: {
     fontSize: 15,
@@ -19,14 +21,14 @@ const signOutModalStyles = StyleSheet.create({
     marginVertical: 30,
   },
   crossText: {
-    color: 'white',
+    color: colors.white,
     fontSize: 15,
   },
   crossIcon: {
     width: 20,
     height: 20,
     borderRadius: 50,
-    backgroundColor: 'red',
+    backgroundColor: colors.red,
     justifyContent: 'center',
     alignItems: 'center',
   },
@@ -37,20 +39,6 @@ const signOutModalStyles = StyleSheet.create({
   headerContainer: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-  },
-  modalContainer: {
-    height: 200,
-    width: 300,
-    padding: 20,
-    backgroundColor: 'white',
-    borderRadius: 10,
-    elevation: 6,
-  },
-  rootContainer: {
-    flex: 1,
-    backgroundColor: 'rgba(0, 0, 0, 0.3)',
-    justifyContent: 'center',
-    alignItems: 'center',
   },
 });
 

@@ -4,6 +4,7 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {Home, Profile} from '../screens';
 import {StyleSheet} from 'react-native';
 import {HomeIcon, ProfileIcon} from '../components';
+import colors from '../constants/colors';
 
 const Tab = createBottomTabNavigator();
 
@@ -12,7 +13,7 @@ const Tab = createBottomTabNavigator();
  * @returns {object}
  */
 const tabScreenOptions = (): object => ({
-  tabBarActiveTintColor: 'green',
+  tabBarActiveTintColor: colors.green,
   tabBarLabelStyle: appBottomStyles.labelText,
   tabBarHideOnKeyboard: true,
 });

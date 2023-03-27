@@ -1,4 +1,5 @@
 const localNumbers = {
+  emptyNumber: 0,
   posts: {
     listFadeLength: 50,
     batchToRender: 5,

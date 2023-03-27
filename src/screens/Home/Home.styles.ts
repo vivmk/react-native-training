@@ -1,10 +1,12 @@
 import {StyleSheet} from 'react-native';
 
+import colors from '../../constants/colors';
+
 const landingScreenStyles = StyleSheet.create({
   welcomeText: {
     fontSize: 24,
     paddingLeft: 16,
-    color: 'green',
+    color: colors.green,
     fontWeight: '700',
     paddingTop: 10,
   },
