@@ -1,4 +1,4 @@
-import {PostType} from '../../../../models/posts.interface';
+import {PostType} from '../../../../models/posts.type';
 
 export type PostCardPropsType = {
   post: PostType;

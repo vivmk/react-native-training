@@ -1,10 +1,12 @@
 import {configureStore} from '@reduxjs/toolkit';
 
-import postsReducer from './posts.reducer';
+import postsReducer from './posts/posts.reducer';
+import todosReducer from './todos/todos.reducer';
 
 export const store = configureStore({
   reducer: {
     posts: postsReducer,
+    todos: todosReducer,
   },
 });
 

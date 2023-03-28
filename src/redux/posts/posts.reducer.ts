@@ -1,18 +1,18 @@
 import {createSlice} from '@reduxjs/toolkit';
 
-import {PostType} from '../models/posts.interface';
+import {PostType} from '../../models/posts.type';
 import {fetchPosts} from './posts.api';
 
 interface InitialType {
-  isLoading: boolean;
+  isPostsLoading: boolean;
   postsData: PostType[];
-  isError: boolean;
+  isPostsError: boolean;
 }
 
 const initialState: InitialType = {
-  isLoading: false,
+  isPostsLoading: false,
   postsData: [],
-  isError: false,
+  isPostsError: false,
 };
 
 const postsSlice = createSlice({
@@ -21,15 +21,15 @@ const postsSlice = createSlice({
   reducers: {},
   extraReducers: builder => {
     builder.addCase(fetchPosts.pending, state => {
-      state.isLoading = true;
+      state.isPostsLoading = true;
     });
     builder.addCase(fetchPosts.fulfilled, (state, action) => {
-      state.isLoading = false;
+      state.isPostsLoading = false;
       state.postsData = action.payload;
     });
     builder.addCase(fetchPosts.rejected, (state, action) => {
       console.log('error: ', action.payload);
-      state.isError = true;
+      state.isPostsError = true;
     });
   },
 });

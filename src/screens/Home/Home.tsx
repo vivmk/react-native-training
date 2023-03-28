@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import {Text, View} from 'react-native';
 
 import {useAppDispatch, useAppSelector} from '../../redux/hooks';
-import {fetchPosts} from '../../redux/posts.api';
+import {fetchPosts} from '../../redux/posts/posts.api';
 import {checkAlternateValue} from '../../utils/checkAlternateValue';
 import landingScreenStyles from './Home.styles';
 import {SearchBar} from './SearchBar';
@@ -16,7 +16,9 @@ import {Posts} from './Posts';
  */
 const Home: React.FC = (): JSX.Element => {
   const dispatch = useAppDispatch();
-  const {postsData, isLoading, isError} = useAppSelector(state => state.posts);
+  const {postsData, isPostsLoading, isPostsError} = useAppSelector(
+    state => state.posts,
+  );
 
   const [message, setMessage] = useState(emptyString);
   const [searchText, setSearchText] = useState(emptyString);
@@ -26,11 +28,11 @@ const Home: React.FC = (): JSX.Element => {
   }, [dispatch, postsData]);
 
   useEffect(() => {
-    isLoading && setMessage(localStrings.home.loading);
-    isError && setMessage(localStrings.home.somethingWrong);
-  }, [isLoading, isError]);
+    isPostsLoading && setMessage(localStrings.home.loading);
+    isPostsError && setMessage(localStrings.home.somethingWrong);
+  }, [isPostsLoading, isPostsError]);
 
-  if (checkAlternateValue(isLoading, isError)) {
+  if (checkAlternateValue(isPostsLoading, isPostsError)) {
     return (
       <View style={landingScreenStyles.rootContainer}>
         <Text style={landingScreenStyles.textMessage}>{message}</Text>

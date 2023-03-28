@@ -3,7 +3,7 @@ import React from 'react';
 
 import {PostCard} from './PostCard';
 import {postsListPropsType, PostsPropsType} from './posts.type';
-import {PostType} from '../../../models/posts.interface';
+import {PostType} from '../../../models/posts.type';
 import {useAppSelector} from '../../../redux/hooks';
 import {emptyString} from '../../../constants/global.constants';
 import localNumbers from '../../../constants/global.numbers';
