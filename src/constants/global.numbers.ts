@@ -4,6 +4,9 @@ const localNumbers = {
     listFadeLength: 50,
     batchToRender: 5,
   },
+  profileMenu: {
+    navigateDelay: 250,
+  },
   landingScreen: {
     codeLength: 4,
     pinLength: 4,

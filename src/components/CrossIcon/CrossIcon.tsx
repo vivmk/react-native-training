@@ -10,7 +10,7 @@ import searchBarStyles from '../../screens/Home/SearchBar/SearchBar.styles';
  * @returns {JSX.Element}
  */
 const CrossIcon: React.FC<CrossIconPropsType> = (
-  crossIconProps: CrossIconPropsType,
+  crossIconProps,
 ): JSX.Element => {
   const {searchText, setSearchText} = crossIconProps;
 

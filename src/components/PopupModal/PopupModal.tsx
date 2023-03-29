@@ -4,6 +4,11 @@ import React from 'react';
 import popupModalStyles from './PopupModal.styles';
 import {PopupModalProps} from './PopupModal.type';
 
+/**
+ * PopupModal component
+ * @param {PopupModalProps} props
+ * @returns {JSX.Element}
+ */
 const PopupModal: React.FC<PopupModalProps> = (props): JSX.Element => {
   const {isModalVisible, children} = props;
 

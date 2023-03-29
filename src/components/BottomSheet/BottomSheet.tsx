@@ -1,10 +1,16 @@
 import React from 'react';
-import {StyleSheet, View} from 'react-native';
+import {View} from 'react-native';
 import ActionSheet from 'react-native-actions-sheet';
 
-import colors from '../../constants/colors';
+import bottomSheetStyles from './bottomSheet.styles';
+import {BottomSheetProps} from './BottomSheet.type';
 
-const BottomSheet = (props: any) => {
+/**
+ * BottomSheet component
+ * @param {BottomSheetProps} props
+ * @returns {JSX.Element}
+ */
+const BottomSheet: React.FC<BottomSheetProps> = (props): JSX.Element => {
   const {sheetRef, children} = props;
 
   return (
@@ -17,12 +23,3 @@ const BottomSheet = (props: any) => {
 };
 
 export default BottomSheet;
-
-const bottomSheetStyles = StyleSheet.create({
-  rootContainer: {
-    height: 500,
-    borderTopRightRadius: 24,
-    borderTopLeftRadius: 24,
-    backgroundColor: colors.white,
-  },
-});
