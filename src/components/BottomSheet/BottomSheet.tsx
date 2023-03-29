@@ -2,7 +2,7 @@ import React from 'react';
 import {View} from 'react-native';
 import ActionSheet from 'react-native-actions-sheet';
 
-import bottomSheetStyles from './bottomSheet.styles';
+import bottomSheetStyles from './BottomSheet.styles';
 import {BottomSheetProps} from './BottomSheet.type';
 
 /**
