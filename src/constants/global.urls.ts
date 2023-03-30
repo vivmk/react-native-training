@@ -14,6 +14,9 @@ const localUrls = {
   profileMenu: {
     arrowIcon: 'https://cdn-icons-png.flaticon.com/512/271/271228.png',
   },
+  screenHeader: {
+    backIcon: 'https://cdn-icons-png.flaticon.com/512/271/271220.png',
+  },
 };
 
 export default localUrls;

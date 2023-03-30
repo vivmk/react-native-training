@@ -1,10 +1,11 @@
 import React from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 
-import {Home, Profile} from '../screens';
+import {Home} from '../screens';
 import {StyleSheet} from 'react-native';
 import {HomeIcon, ProfileIcon} from '../components';
 import colors from '../constants/colors';
+import ProfileStack from './ProfileStack';
 
 const Tab = createBottomTabNavigator();
 
@@ -35,13 +36,13 @@ const AppBottomStack = (): JSX.Element => {
         component={Home}
       />
       <Tab.Screen
-        name="ProfileScreen"
+        name="ProfileStack"
         options={{
           headerShown: false,
           tabBarIcon: ProfileIcon,
           tabBarLabel: 'Profile',
         }}
-        component={Profile}
+        component={ProfileStack}
       />
     </Tab.Navigator>
   );

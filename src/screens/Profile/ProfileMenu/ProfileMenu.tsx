@@ -1,6 +1,7 @@
 import React, {useRef} from 'react';
 import {FlatList, Image, Text, TouchableOpacity, View} from 'react-native';
 import {ActionSheetRef} from 'react-native-actions-sheet';
+import {useNavigation} from '@react-navigation/native';
 
 import localUrls from '../../../constants/global.urls';
 import profileMenuStyles from './ProfileMenu.styles';
@@ -14,6 +15,7 @@ import SignOutSheet from './SignOutSheet/SignOutSheet';
  * @returns {JSX.Element}
  */
 const ProfileMenu: React.FC = (): JSX.Element => {
+  const navigation = useNavigation<any>();
   const bottomSheetRef = useRef<ActionSheetRef>(null);
 
   /**
@@ -31,8 +33,13 @@ const ProfileMenu: React.FC = (): JSX.Element => {
     const {item: menu, index} = menuListProps;
 
     return (
-      <TouchableOpacity key={index} style={profileMenuStyles.menuContainer}>
-        <Text style={profileMenuStyles.menuText}>{menu.name}</Text>
+      <TouchableOpacity
+        key={index}
+        style={profileMenuStyles.menuContainer}
+        onPress={() =>
+          navigation.navigate(menu.stackName, {screen: menu.screenName})
+        }>
+        <Text style={profileMenuStyles.menuText}>{menu.menuName}</Text>
         <Image
           style={profileMenuStyles.iconSize}
           source={{uri: localUrls.profileMenu.arrowIcon}}

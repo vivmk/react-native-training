@@ -15,9 +15,5 @@ export const userPinCode = '2323';
 export const pinCodeKey = '@StoredPin';
 
 export const menuData = [
-  {id: 1, name: 'First menu'},
-  {id: 2, name: 'Second menu'},
-  {id: 3, name: 'Third menu'},
-  {id: 4, name: 'Fourth menu'},
-  {id: 5, name: 'Fifth menu'},
+  {menuName: 'Todo list', stackName: 'ProfileStack', screenName: 'TodoScreen'},
 ];
