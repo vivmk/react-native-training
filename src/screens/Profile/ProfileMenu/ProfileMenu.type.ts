@@ -1,7 +1,7 @@
 type MenuType = {
   menuName: string;
-  stackName: string;
-  screenName: string;
+  stackName?: string;
+  screenName?: string;
 };
 
 export type MenuListType = {

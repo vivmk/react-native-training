@@ -2,7 +2,7 @@ import React from 'react';
 import {Image} from 'react-native';
 import localUrls from '../constants/global.urls';
 
-import {appBottomStyles} from '../navigation/AppBottomStack';
+import {appBottomStyles} from '../navigation/AppBottomTab';
 
 /**
  * profile icon to show in bottom tab bar

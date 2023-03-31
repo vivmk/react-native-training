@@ -1,8 +1,6 @@
-import React from 'react';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
-import {Profile, TodoList} from '../screens';
-import {ScreenHeader} from '../components';
+import {Profile} from '../screens';
 
 const Stack = createNativeStackNavigator();
 
@@ -23,15 +21,6 @@ const ProfileStack = (): JSX.Element => {
         name="ProfileScreen"
         options={profileScreenOptions}
         component={Profile}
-      />
-      <Stack.Screen
-        name="TodoScreen"
-        options={{
-          header: ({navigation}) => (
-            <ScreenHeader title="Todo List" navigation={navigation} />
-          ),
-        }}
-        component={TodoList}
       />
     </Stack.Navigator>
   );
