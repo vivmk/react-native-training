@@ -86,7 +86,7 @@ const allTabStyles = StyleSheet.create({
     padding: 10,
     marginVertical: 8,
     marginHorizontal: 15,
-    borderColor: colors.green,
+    borderColor: colors.black,
     backgroundColor: colors.white,
     borderRadius: 10,
     borderWidth: 2,

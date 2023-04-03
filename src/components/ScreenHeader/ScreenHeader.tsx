@@ -8,9 +8,17 @@ import screenHeaderStyles from './ScreenHeader.styles';
  * ScreenHeader component
  * @returns {JSX.Element}
  */
-const ScreenHeader = ({title, navigation}: any): JSX.Element => {
+const ScreenHeader = ({
+  title,
+  navigation,
+  elevated = false,
+}: any): JSX.Element => {
   return (
-    <View style={screenHeaderStyles.rootContainer}>
+    <View
+      style={{
+        ...screenHeaderStyles.rootContainer,
+        elevation: elevated ? 6 : 0,
+      }}>
       <TouchableOpacity
         style={screenHeaderStyles.backIcon}
         onPress={() => navigation.goBack()}>

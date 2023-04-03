@@ -1,4 +1,4 @@
-type MenuType = {
+export type MenuType = {
   menuName: string;
   stackName?: string;
   screenName?: string;

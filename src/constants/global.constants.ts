@@ -16,4 +16,5 @@ export const pinCodeKey = '@StoredPin';
 
 export const menuData = [
   {menuName: 'Todo list', stackName: 'TodoTopTab', screenName: 'AllTabScreen'},
+  {menuName: 'Friends', screenName: 'FriendsScreen'},
 ];

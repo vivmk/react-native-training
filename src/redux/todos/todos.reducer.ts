@@ -6,13 +6,25 @@ import fetchTodos from './todos.api';
 type InitialTodoType = {
   isTodosLoading: boolean;
   isTodosError: boolean;
+  inProgressTodos: TodoType[];
+  completedTodos: TodoType[];
   todosData: TodoType[];
 };
 
 const initialTodoState: InitialTodoType = {
   isTodosLoading: false,
   isTodosError: false,
+  inProgressTodos: [],
+  completedTodos: [],
   todosData: [],
+};
+
+const getFilteredTodos = (apiData: TodoType[], isCompleted: boolean) => {
+  if (isCompleted) {
+    return apiData.filter((todo: TodoType) => todo.completed);
+  } else {
+    return apiData.filter((todo: TodoType) => !todo.completed);
+  }
 };
 
 const todoSlice = createSlice({
@@ -26,8 +38,12 @@ const todoSlice = createSlice({
     });
     // api has loaded data successfully
     builder.addCase(fetchTodos.fulfilled, (state: any, action: any) => {
+      const allTodosData = action.payload;
+
       state.isTodosLoading = false;
-      state.todosData = action.payload;
+      state.todosData = allTodosData;
+      state.inProgressTodos = getFilteredTodos(allTodosData, false);
+      state.completedTodos = getFilteredTodos(allTodosData, true);
     });
     // api has failed to load data
     builder.addCase(fetchTodos.rejected, (state: any, action: any) => {
