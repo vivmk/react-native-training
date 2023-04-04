@@ -140,8 +140,8 @@ const friendsScreenStyles = StyleSheet.create({
     fontSize: 40,
     fontWeight: '600',
     color: colors.green,
-    marginTop: 30,
-    marginBottom: 15,
+    marginTop: 20,
+    marginBottom: 10,
     marginLeft: 20,
   },
 });
