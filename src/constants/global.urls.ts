@@ -17,6 +17,9 @@ const localUrls = {
   screenHeader: {
     backIcon: 'https://cdn-icons-png.flaticon.com/512/271/271220.png',
   },
+  friends: {
+    moveIcon: 'https://cdn-icons-png.flaticon.com/512/1549/1549454.png',
+  },
 };
 
 export default localUrls;

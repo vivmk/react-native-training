@@ -1,7 +1,7 @@
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
-import {LandingScreen, Friends} from '../screens';
+import {LandingScreen, Friends, FriendDetail} from '../screens';
 import AppBottomStack from './AppBottomTab';
 import {ScreenHeader} from '../components';
 import TodoTopTab from './TodoTopTab';
@@ -43,6 +43,19 @@ const AppStack = (): JSX.Element => {
             ),
           }}
           component={Friends}
+        />
+        <Stack.Screen
+          name="FriendDetailScreen"
+          options={{
+            header: ({navigation}) => (
+              <ScreenHeader
+                title="Friend Detail"
+                navigation={navigation}
+                elevated
+              />
+            ),
+          }}
+          component={FriendDetail}
         />
       </Stack.Navigator>
     </NavigationContainer>

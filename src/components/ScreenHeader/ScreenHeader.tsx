@@ -17,7 +17,7 @@ const ScreenHeader = ({
     <View
       style={{
         ...screenHeaderStyles.rootContainer,
-        elevation: elevated ? 6 : 0,
+        elevation: elevated ? 2 : 0,
       }}>
       <TouchableOpacity
         style={screenHeaderStyles.backIcon}

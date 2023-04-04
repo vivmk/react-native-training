@@ -1,5 +1,13 @@
 import React, {useEffect, useState} from 'react';
-import {FlatList, StyleSheet, Text, View} from 'react-native';
+import {
+  FlatList,
+  Image,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from 'react-native';
+import {useNavigation} from '@react-navigation/native';
 
 import colors from '../../../../constants/colors';
 import {emptyString} from '../../../../constants/global.constants';
@@ -9,10 +17,13 @@ import {checkAlternateValue} from '../../../../utils/checkAlternateValue';
 import landingScreenStyles from '../../../Home/Home.styles';
 import fetchUsers from '../../../../redux/users/users.api';
 import {FriendsListProps} from './Friends.type';
+import localUrls from '../../../../constants/global.urls';
+import {UserType} from '../../../../models/users.type';
 
 const Friends = () => {
   // to make api call
   const dispatch = useAppDispatch();
+  const navigation = useNavigation<any>();
 
   // to control api error states
   const [apiMessage, setApiMessage] = useState(emptyString);
@@ -33,16 +44,28 @@ const Friends = () => {
     isUsersError && setApiMessage(localStrings.home.somethingWrong);
   }, [isUsersLoading, isUsersError]);
 
+  const onPressCardHandler = (friend: UserType) => {
+    navigation.navigate('FriendDetailScreen', {user: friend});
+  };
+
   const renderFriendsList = (friendsListProps: FriendsListProps) => {
     const {item: friend, index} = friendsListProps;
 
     return (
       <View key={index} style={friendsScreenStyles.cardContainer}>
-        <View style={friendsScreenStyles.nameUserNameContainer}>
-          <Text style={friendsScreenStyles.friendName}>{friend.name}</Text>
-          <Text numberOfLines={1} style={friendsScreenStyles.friendUserName}>
-            {friend.username}
-          </Text>
+        <View style={friendsScreenStyles.nameIconContainer}>
+          <View style={friendsScreenStyles.nameUserNameContainer}>
+            <Text style={friendsScreenStyles.friendName}>{friend.name}</Text>
+            <Text numberOfLines={1} style={friendsScreenStyles.friendUserName}>
+              {friend.username}
+            </Text>
+          </View>
+          <TouchableOpacity onPress={() => onPressCardHandler(friend)}>
+            <Image
+              style={{height: 20, width: 20}}
+              source={{uri: localUrls.friends.moveIcon}}
+            />
+          </TouchableOpacity>
         </View>
         <Text style={friendsScreenStyles.companyName}>
           {friend.company.name}
@@ -50,6 +73,10 @@ const Friends = () => {
       </View>
     );
   };
+
+  const FriendsListHeader = () => (
+    <Text style={friendsScreenStyles.friendsText}>Friends</Text>
+  );
 
   // if loading or error display same
   if (checkAlternateValue(isUsersLoading, isUsersError)) {
@@ -62,10 +89,10 @@ const Friends = () => {
 
   return (
     <View>
-      <Text style={friendsScreenStyles.friendsText}>Friends</Text>
       <FlatList
         data={usersData}
         renderItem={renderFriendsList}
+        ListHeaderComponent={FriendsListHeader}
         fadingEdgeLength={50}
       />
     </View>
@@ -75,6 +102,11 @@ const Friends = () => {
 export default Friends;
 
 const friendsScreenStyles = StyleSheet.create({
+  nameIconContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+  },
   companyName: {
     fontSize: 16,
     color: 'black',
