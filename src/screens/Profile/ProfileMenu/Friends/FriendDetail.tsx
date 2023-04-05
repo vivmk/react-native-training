@@ -3,67 +3,63 @@ import {StyleSheet, Text, View} from 'react-native';
 
 import colors from '../../../../constants/colors';
 
+const NameUserName = ({user}: any) => {
+  return (
+    <View style={friendDetailStyles.cardContainer}>
+      <Text style={friendDetailStyles.friendName}>{user.name}</Text>
+      <Text style={friendDetailStyles.userInfoText}>{user.username}</Text>
+    </View>
+  );
+};
+
+const ContactDetails = ({user}: any) => {
+  return (
+    <View style={friendDetailStyles.cardContainer}>
+      <Text style={friendDetailStyles.sectionHeader}>Contact Details</Text>
+      <Text style={friendDetailStyles.userInfoText}>{user.phone}</Text>
+      <Text style={friendDetailStyles.userInfoText}>{user.email}</Text>
+    </View>
+  );
+};
+
+const CompanyDetails = ({user}: any) => {
+  return (
+    <View style={friendDetailStyles.cardContainer}>
+      <Text style={friendDetailStyles.sectionHeader}>Company Details</Text>
+      <Text style={friendDetailStyles.userInfoText}>{user.company.name}</Text>
+      <Text style={friendDetailStyles.userInfoText}>
+        {user.company.catchPhrase}
+      </Text>
+      <Text style={friendDetailStyles.userInfoText}>{user.company.bs}</Text>
+      <Text style={friendDetailStyles.linkText}>{user.website}</Text>
+    </View>
+  );
+};
+
+const AddressDetails = ({user}: any) => {
+  return (
+    <View style={friendDetailStyles.cardContainer}>
+      <Text style={friendDetailStyles.sectionHeader}>Address Details</Text>
+      <Text style={friendDetailStyles.userInfoText}>{user.address.street}</Text>
+      <Text style={friendDetailStyles.userInfoText}>{user.address.suite}</Text>
+      <Text style={friendDetailStyles.userInfoText}>{user.address.city}</Text>
+      <Text style={friendDetailStyles.userInfoText}>
+        {user.address.zipcode}
+      </Text>
+      <Text style={friendDetailStyles.linkText}>get directions</Text>
+    </View>
+  );
+};
+
 const FriendDetail = (props: any) => {
   const {user} = props.route.params;
 
-  const NameUserName = () => {
-    return (
-      <View style={friendDetailStyles.cardContainer}>
-        <Text style={friendDetailStyles.friendName}>{user.name}</Text>
-        <Text style={friendDetailStyles.userInfoText}>{user.username}</Text>
-      </View>
-    );
-  };
-
-  const ContactDetails = () => {
-    return (
-      <View style={friendDetailStyles.cardContainer}>
-        <Text style={friendDetailStyles.sectionHeader}>Contact Details</Text>
-        <Text style={friendDetailStyles.userInfoText}>{user.phone}</Text>
-        <Text style={friendDetailStyles.userInfoText}>{user.email}</Text>
-      </View>
-    );
-  };
-
-  const CompanyDetails = () => {
-    return (
-      <View style={friendDetailStyles.cardContainer}>
-        <Text style={friendDetailStyles.sectionHeader}>Company Details</Text>
-        <Text style={friendDetailStyles.userInfoText}>{user.company.name}</Text>
-        <Text style={friendDetailStyles.userInfoText}>
-          {user.company.catchPhrase}
-        </Text>
-        <Text style={friendDetailStyles.userInfoText}>{user.company.bs}</Text>
-        <Text style={friendDetailStyles.linkText}>{user.website}</Text>
-      </View>
-    );
-  };
-
-  const AddressDetails = () => {
-    return (
-      <View style={friendDetailStyles.cardContainer}>
-        <Text style={friendDetailStyles.sectionHeader}>Address Details</Text>
-        <Text style={friendDetailStyles.userInfoText}>
-          {user.address.street}
-        </Text>
-        <Text style={friendDetailStyles.userInfoText}>
-          {user.address.suite}
-        </Text>
-        <Text style={friendDetailStyles.userInfoText}>{user.address.city}</Text>
-        <Text style={friendDetailStyles.userInfoText}>
-          {user.address.zipcode}
-        </Text>
-        <Text style={friendDetailStyles.linkText}>get directions</Text>
-      </View>
-    );
-  };
-
   return (
     <View style={friendDetailStyles.rootContainer}>
-      <NameUserName />
-      <ContactDetails />
-      <CompanyDetails />
-      <AddressDetails />
+      <NameUserName user={user} />
+      <ContactDetails user={user} />
+      <CompanyDetails user={user} />
+      <AddressDetails user={user} />
     </View>
   );
 };

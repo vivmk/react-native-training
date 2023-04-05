@@ -1,3 +1,4 @@
+import React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
@@ -7,6 +8,14 @@ import {ScreenHeader} from '../components';
 import TodoTopTab from './TodoTopTab';
 
 const Stack = createNativeStackNavigator();
+
+const headerComponent = (
+  navigation: any,
+  title: string,
+  isElevated: boolean = false,
+) => (
+  <ScreenHeader title={title} navigation={navigation} elevated={isElevated} />
+);
 
 /**
  * AppStack component
@@ -29,31 +38,23 @@ const AppStack = (): JSX.Element => {
         <Stack.Screen
           name="TodoTopTab"
           options={{
-            header: ({navigation}) => (
-              <ScreenHeader title="Todo List" navigation={navigation} />
-            ),
+            header: ({navigation}) => headerComponent(navigation, 'Todo List'),
           }}
           component={TodoTopTab}
         />
         <Stack.Screen
           name="FriendsScreen"
           options={{
-            header: ({navigation}) => (
-              <ScreenHeader title="Friends" navigation={navigation} elevated />
-            ),
+            header: ({navigation}) =>
+              headerComponent(navigation, 'Friends', true),
           }}
           component={Friends}
         />
         <Stack.Screen
           name="FriendDetailScreen"
           options={{
-            header: ({navigation}) => (
-              <ScreenHeader
-                title="Friend Detail"
-                navigation={navigation}
-                elevated
-              />
-            ),
+            header: ({navigation}) =>
+              headerComponent(navigation, 'Friend Detail', true),
           }}
           component={FriendDetail}
         />

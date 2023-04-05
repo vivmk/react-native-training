@@ -20,6 +20,10 @@ import {FriendsListProps} from './Friends.type';
 import localUrls from '../../../../constants/global.urls';
 import {UserType} from '../../../../models/users.type';
 
+const FriendsListHeader = () => (
+  <Text style={friendsScreenStyles.friendsText}>Friends</Text>
+);
+
 const Friends = () => {
   // to make api call
   const dispatch = useAppDispatch();
@@ -73,10 +77,6 @@ const Friends = () => {
       </View>
     );
   };
-
-  const FriendsListHeader = () => (
-    <Text style={friendsScreenStyles.friendsText}>Friends</Text>
-  );
 
   // if loading or error display same
   if (checkAlternateValue(isUsersLoading, isUsersError)) {

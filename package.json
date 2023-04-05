@@ -16,6 +16,7 @@
     "@react-navigation/native": "^6.1.6",
     "@react-navigation/native-stack": "^6.9.12",
     "@reduxjs/toolkit": "^1.9.3",
+    "prettier": "^2.8.7",
     "react": "17.0.2",
     "react-native": "0.68.2",
     "react-native-actions-sheet": "^0.8.29",

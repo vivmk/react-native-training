@@ -4,11 +4,12 @@ import React from 'react';
 
 import {store} from './src/redux/store';
 import AppStack from './src/navigation/AppStack';
+import colors from './src/constants/colors';
 
 const App = () => {
   return (
     <Provider store={store}>
-      <StatusBar backgroundColor="green" />
+      <StatusBar backgroundColor={colors.green} />
       <AppStack />
     </Provider>
   );
