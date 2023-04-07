@@ -1,7 +1,11 @@
 import React from 'react';
-import {StyleSheet, Text, View} from 'react-native';
+import {Linking, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 
 import colors from '../../../../constants/colors';
+
+const openCompanyWebsite = (url: string) => Linking.openURL(`https://${url}`);
+const sendMailToCompany = (email: string) => Linking.openURL(`mailto:${email}`);
+const phoneCallToCompany = (phone: string) => Linking.openURL(`tel:${phone}`);
 
 const NameUserName = ({user}: any) => {
   return (
@@ -16,8 +20,12 @@ const ContactDetails = ({user}: any) => {
   return (
     <View style={friendDetailStyles.cardContainer}>
       <Text style={friendDetailStyles.sectionHeader}>Contact Details</Text>
-      <Text style={friendDetailStyles.userInfoText}>{user.phone}</Text>
-      <Text style={friendDetailStyles.userInfoText}>{user.email}</Text>
+      <TouchableOpacity onPress={() => phoneCallToCompany(user.phone)}>
+        <Text style={friendDetailStyles.linkText}>{user.phone}</Text>
+      </TouchableOpacity>
+      <TouchableOpacity onPress={() => sendMailToCompany(user.email)}>
+        <Text style={friendDetailStyles.linkText}>{user.email}</Text>
+      </TouchableOpacity>
     </View>
   );
 };
@@ -31,7 +39,9 @@ const CompanyDetails = ({user}: any) => {
         {user.company.catchPhrase}
       </Text>
       <Text style={friendDetailStyles.userInfoText}>{user.company.bs}</Text>
-      <Text style={friendDetailStyles.linkText}>{user.website}</Text>
+      <TouchableOpacity onPress={() => openCompanyWebsite(user.website)}>
+        <Text style={friendDetailStyles.linkText}>{user.website}</Text>
+      </TouchableOpacity>
     </View>
   );
 };
@@ -46,7 +56,7 @@ const AddressDetails = ({user}: any) => {
       <Text style={friendDetailStyles.userInfoText}>
         {user.address.zipcode}
       </Text>
-      <Text style={friendDetailStyles.linkText}>get directions</Text>
+      <Text style={friendDetailStyles.linkText}>Get directions</Text>
     </View>
   );
 };
