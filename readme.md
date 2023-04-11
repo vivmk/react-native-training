@@ -1,3 +1,48 @@
+react native build types :
+
+debug - testing, debugging, initial stages
+release - uploading to play store / app store
+
+official build process :
+https://reactnative.dev/docs/signed-apk-android
+
+command to generate hash :
+keytool -genkeypair -v -storetype PKCS12 -keystore my-upload-key.keystore -alias my-key-alias -keyalg RSA -keysize 2048 -validity 10000
+
+path to run keytool :
+C:\Program Files\Java\jdk-18.0.1.1\bin
+
+credentials key pair :
+MYAPP_UPLOAD_STORE_FILE=my-upload-key.keystore
+MYAPP_UPLOAD_KEY_ALIAS=my-key-alias
+MYAPP_UPLOAD_STORE_PASSWORD=samplepass
+MYAPP_UPLOAD_KEY_PASSWORD=samplepass
+
+path to generate builds :
+cd android
+
+command to get .aab file (to upload to play store)
+./gradlew bundleRelease
+
+path where .aab file will be :
+D:\NativeApp\android\app\build\outputs\bundle\release
+
+command to get .apk file (to run directly in our phones)
+./gradlew assembleRelease
+
+path where .apk file will be :
+D:\NativeApp\android\app\build\outputs\apk\release
+
+steps to generate build :
+
+1. open cmd as admin in specified path
+2. file my-upload-key.keystore will be generated in same folder
+3. copy that file into android/app dir
+4. paste the credentials pair in android/gradle.properties
+5. paste the signing configs in android/app/build.gradle below default
+6. paste signingConfigs.release in release object of buildTypes
+7. run the build commands
+
 DAY 6-7 notes :
 
 to install root navigation lib:
