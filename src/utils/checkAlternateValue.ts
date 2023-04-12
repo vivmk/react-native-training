@@ -1,6 +1,3 @@
-export const checkAlternateValue = (
-  firstValue: boolean,
-  secondValue: boolean,
-) => {
+export const checkAlternateValue = (firstValue: any, secondValue: any) => {
   return firstValue || secondValue;
 };
