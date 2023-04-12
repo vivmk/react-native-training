@@ -1,0 +1,13 @@
+57ffb2950525be2ac5f1de30d8833a7f
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+Object.defineProperty(exports, "CrossIcon", {
+  enumerable: true,
+  get: function get() {
+    return _CrossIcon.default;
+  }
+});
+var _CrossIcon = _interopRequireDefault(require("./CrossIcon"));
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJfQ3Jvc3NJY29uIiwiX2ludGVyb3BSZXF1aXJlRGVmYXVsdCIsInJlcXVpcmUiXSwic291cmNlcyI6WyJpbmRleC50cyJdLCJzb3VyY2VzQ29udGVudCI6WyJleHBvcnQge2RlZmF1bHQgYXMgQ3Jvc3NJY29ufSBmcm9tICcuL0Nyb3NzSWNvbic7XG4iXSwibWFwcGluZ3MiOiI7Ozs7Ozs7Ozs7QUFBQSxJQUFBQSxVQUFBLEdBQUFDLHNCQUFBLENBQUFDLE9BQUEifQ==
