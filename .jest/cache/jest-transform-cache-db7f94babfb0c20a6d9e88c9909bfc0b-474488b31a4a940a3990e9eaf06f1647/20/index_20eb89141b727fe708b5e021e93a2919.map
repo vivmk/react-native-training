@@ -1,1 +1,0 @@
-{"version":3,"names":["_CrossIcon","_interopRequireDefault","require"],"sources":["index.ts"],"sourcesContent":["export {default as CrossIcon} from './CrossIcon';\n"],"mappings":";;;;;;;;;;AAAA,IAAAA,UAAA,GAAAC,sBAAA,CAAAC,OAAA"}

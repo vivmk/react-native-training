@@ -1,1 +1,0 @@
-{"version":3,"names":["_PostCard","_interopRequireDefault","require"],"sources":["index.ts"],"sourcesContent":["export {default as PostCard} from './PostCard';\n"],"mappings":";;;;;;;;;;AAAA,IAAAA,SAAA,GAAAC,sBAAA,CAAAC,OAAA"}

@@ -11,7 +11,6 @@ describe('Testing Home component', () => {
       <NavigationContainer>
         <Home />
       </NavigationContainer>
-      ,
     </MockProvider>,
   );
   () => expect(component.findByTestId('Home')).toBeInTheDocument();

@@ -2,7 +2,9 @@ import React from 'react';
 import {Provider} from 'react-redux';
 
 const store = {
-  posts: {},
+  postsData: {},
+  isPostsLoading: false,
+  usersData: {},
 };
 
 const MockProvider = (props: any) => {

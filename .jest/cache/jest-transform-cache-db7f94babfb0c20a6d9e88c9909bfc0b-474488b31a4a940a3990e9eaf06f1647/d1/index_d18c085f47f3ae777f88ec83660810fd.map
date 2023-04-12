@@ -1,1 +1,0 @@
-{"version":3,"names":["_Posts","_interopRequireDefault","require"],"sources":["index.ts"],"sourcesContent":["export {default as Posts} from './Posts';\n"],"mappings":";;;;;;;;;;AAAA,IAAAA,MAAA,GAAAC,sBAAA,CAAAC,OAAA"}
