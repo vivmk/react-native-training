@@ -84,3 +84,33 @@ reducer is watching that api
 reducer will make changes to data based on api resp
 reducer will keep the api resp in store
 screen will access updated data from store using selector
+
+===========================
+
+USEFUL RESOURCES RELATED TO REACT / NATIVE
+
+videos to watch:
+https://www.youtube.com/watch?v=iD2fgC74ZtA
+
+realm db in react native
+animations in react native
+
+graphs in react native:
+https://www.youtube.com/watch?v=i20R4lwkJzw
+
+people in youtube
+https://www.youtube.com/@KentCDodds-vids
+https://www.youtube.com/@t3dotgg
+
+Ben Awad
+Fireship
+Jack Herrington
+JSConf
+Traversy Media
+Web Dev Simplified
+
+https://www.meetup.com/React-Native-Bangalore-Meetup/
+https://react.dev/community/videos
+https://www.youtube.com/watch?v=8pDqJVdNa44&t=275s
+
+https://www.freecodecamp.org/news/react-hooks-cheatsheet/
