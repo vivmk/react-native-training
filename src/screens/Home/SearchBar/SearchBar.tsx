@@ -28,6 +28,7 @@ const SearchBar: React.FC<SearchBarPropsType> = (
         <CrossIcon searchText={searchText} setSearchText={setSearchText} />
       </View>
       <TouchableOpacity
+        testID="searchBarIcon"
         onPress={() => Keyboard.dismiss()}
         style={searchBarStyles.imageContainer}>
         <Image
