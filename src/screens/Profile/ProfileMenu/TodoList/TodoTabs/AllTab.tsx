@@ -64,7 +64,7 @@ const AllTab = () => {
         data={todosData}
         renderItem={renderTodoList}
         updateCellsBatchingPeriod={5}
-        style={{paddingVertical: 15}}
+        style={allTabStyles.rootListContainer}
         fadingEdgeLength={50}
       />
     </View>
@@ -74,6 +74,9 @@ const AllTab = () => {
 export default AllTab;
 
 const allTabStyles = StyleSheet.create({
+  rootListContainer: {
+    paddingVertical: 15,
+  },
   statusText: {
     fontSize: 14,
     fontWeight: '500',

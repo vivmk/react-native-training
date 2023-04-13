@@ -71,3 +71,16 @@ DAY 16 :
 
 Website to download libraries :
 https://www.npmjs.com
+
+JEST :
+expect()
+toBe()
+toHaveBeenCalled()
+toEqual()
+
+redux flow :
+make api call from screen using dispatch
+reducer is watching that api
+reducer will make changes to data based on api resp
+reducer will keep the api resp in store
+screen will access updated data from store using selector
